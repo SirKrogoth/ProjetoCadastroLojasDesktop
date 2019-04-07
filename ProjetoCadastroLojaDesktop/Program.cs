@@ -16,9 +16,12 @@ namespace ProjetoCadastroLojaDesktop
 
                 cliente.codigo = 1;
 
-                cliente.nome = "EL".PrimeiraMaiuscula();
+                cliente.nome = "joao rafael menezes".PrimeiraMaiuscula();
                 cliente.tipo = 1;
                 cliente.dataCadastro = new DateTime(1989, 03, 14);
+                cliente.Dispose();
+
+
 
                 using (Cliente cliente2 = new Cliente())
                 {

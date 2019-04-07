@@ -26,7 +26,7 @@ public static class MetodoExtensao
 }
 
 //Em uma classe PARTIAL, é necessário que ambas estejam no mesmo namespace
-namespace ProjetoCadastroLojaDesktop
+namespace Loja
 {
     public partial class Cliente : IDisposable
     {

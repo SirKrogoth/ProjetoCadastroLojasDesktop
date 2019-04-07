@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B7EB890D-F9A5-4B7E-96AA-6026C6815B46}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>ProjetoCadastroLojaDesktop</RootNamespace>
-    <AssemblyName>ProjetoCadastroLojaDesktop</AssemblyName>
+    <ProjectGuid>{EC1AF2DF-5D18-4B86-B4CF-91622E0F6FAD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Loja</RootNamespace>
+    <AssemblyName>Loja</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,23 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Classes\Cliente.cs" />
+    <Compile Include="Classes\Contato.cs" />
     <Compile Include="Excecoes\ExcecoesCliente.cs" />
     <Compile Include="Métodos\MetodosCliente.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LojaManager\LojaManager.csproj">
-      <Project>{a3640e50-76f8-4a45-af38-3ac9a90d0a02}</Project>
-      <Name>LojaManager</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Loja\Loja.csproj">
-      <Project>{ec1af2df-5d18-4b86-b4cf-91622e0f6fad}</Project>
-      <Name>Loja</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

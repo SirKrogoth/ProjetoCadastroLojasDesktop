@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjetoCadastroLojaDesktop
+namespace Loja
 {
     public partial class Cliente
     {
@@ -18,11 +18,13 @@ namespace ProjetoCadastroLojaDesktop
             }
             set
             {
-                if(value < 0)
+                if (value < 0)
                 {
                     throw new ProjetoCadastroLojaDesktop.Excecoes.ValidacaoException("O código informado para este cliente está inválido. Favor, revise as informações lançadas.");
                     _codigo = 0;
                 }
+                else
+                    _codigo = value;
             }
         }
         private string _nome;
@@ -34,8 +36,10 @@ namespace ProjetoCadastroLojaDesktop
             }
             set
             {
-                if(value.Length <= 3)
+                if (value.Length <= 3)
                     throw new ProjetoCadastroLojaDesktop.Excecoes.ValidacaoException("Não é possível inserir um nome com menos de 4 caracteres.");
+                else
+                    _nome = value;
             }
         }
         public int? tipo { get; set; }
