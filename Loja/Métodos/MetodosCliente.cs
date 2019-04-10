@@ -30,12 +30,51 @@ namespace Loja
 {
     public partial class Cliente : IDisposable
     {
-        public void Dispose()
+        public Cliente()
         {
-            this.Gravar();
+            this.novo = true;
+            this.modificado = false;
         }
 
-        public void Gravar()
+        public Cliente(int codigo)
+        {
+            using (SqlConnection cn = new SqlConnection("Data Source=(local);Initial Catalog=Loja;User ID=sa;Password=506829"))
+            {
+                try
+                {
+                    cn.Open();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = cn;
+
+                    cmd.CommandText = "SELECT * FROM cliente WHERE codigo = @codigo";
+                    cmd.Parameters.AddWithValue("@codigo", codigo);
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        if(dr.HasRows)
+                        {
+                            dr.Read();
+                            this._codigo = dr.GetInt32(dr.GetOrdinal("codigo"));
+                            this._nome = dr.GetString(dr.GetOrdinal("nome"));
+                            this._tipo = dr.GetInt32(dr.GetOrdinal("tipo"));
+                            this._dataCadastro = dr.GetDateTime(dr.GetOrdinal("dataCadastro"));
+                        }
+                    }
+
+                    this.novo = false;
+                    this.modificado = false;
+                }
+            }
+        }
+
+        public void Insert()
         {
             using (SqlConnection conexao = new SqlConnection("Data Source=(local);Initial Catalog=Loja;User ID=sa;Password=506829"))
             {
@@ -57,19 +96,70 @@ namespace Loja
 
                     cmd.Parameters.AddWithValue("@codigo", this.codigo);
                     cmd.Parameters.AddWithValue("@nome", this.nome);
-                    cmd.Parameters.AddWithValue("@tipo", this.tipo);
-                    cmd.Parameters.AddWithValue("@dataCadastro", this.dataCadastro);
+                    cmd.Parameters.AddWithValue("@tipo", this._tipo);
+                    cmd.Parameters.AddWithValue("@dataCadastro", this._dataCadastro);
 
                     try
                     {
                         cmd.ExecuteNonQuery();
                     }
-                    catch (SqlException ex)
+                    catch (SqlException)
                     {
-                        
+
                     }
                 }
             }
+        }
+
+        public void Update()
+        {
+            using (SqlConnection conexao = new SqlConnection("Data Source=(local);Initial Catalog=Loja;User ID=sa;Password=506829"))
+            {
+                try
+                {
+                    conexao.Open();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandText = "UPDATE cliente SET nome = @nome, tipo = @tipo, dataCadastro = @dataCadastro" + 
+                        " WHERE codigo = @codigo";
+
+                    cmd.Connection = conexao;
+
+                    cmd.Parameters.AddWithValue("@codigo", this._codigo);
+                    cmd.Parameters.AddWithValue("@nome", this._nome);
+                    cmd.Parameters.AddWithValue("@tipo", this._tipo);
+                    cmd.Parameters.AddWithValue("@dataCadastro", this._dataCadastro);
+
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                        this.modificado = false;
+                    }
+                    catch (SqlException)
+                    {
+
+                    }
+                }
+            }
+        }
+
+        public void Dispose()
+        {
+            if (this.novo)
+                Insert();
+            else if(this.modificado)
+                Update();
+        }
+
+        public void Gravar()
+        {
+            
         }
     }
 }

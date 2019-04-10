@@ -55,16 +55,16 @@ namespace ProjetoCadastroLojaDesktop
                         " VALUES(@codigo, @nome, @tipo, @dataCadastro)";
                     cmd.Connection = conexao;
 
-                    cmd.Parameters.AddWithValue("@codigo", this.codigo);
-                    cmd.Parameters.AddWithValue("@nome", this.nome);
-                    cmd.Parameters.AddWithValue("@tipo", this.tipo);
-                    cmd.Parameters.AddWithValue("@dataCadastro", this.dataCadastro);
+                    //cmd.Parameters.AddWithValue("@codigo", );
+                    //cmd.Parameters.AddWithValue("@nome", this.nome);
+                    //cmd.Parameters.AddWithValue("@tipo", this.tipo);
+                    //cmd.Parameters.AddWithValue("@dataCadastro", this.dataCadastro);
 
                     try
                     {
                         cmd.ExecuteNonQuery();
                     }
-                    catch (SqlException ex)
+                    catch (SqlException)
                     {
                         
                     }
