@@ -30,6 +30,8 @@ namespace ProjetoCadastroLojaDesktop
 {
     public partial class Cliente : IDisposable
     {
+        private object _codigo;
+
         public void Dispose()
         {
             this.Gravar();
@@ -70,6 +72,38 @@ namespace ProjetoCadastroLojaDesktop
                     }
                 }
             }
+        }
+
+        public void ApagarCliente(int codigo)
+        {
+            using (SqlConnection conexao = new SqlConnection("Data Source=(local);Initial Catalog=Loja;User ID=sa;Password=506829"))
+            {
+                try
+                {
+                    conexao.Open();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandText = "DELETE FROM Cliente WHERE codigo = @codigo";
+                    cmd.Connection = conexao;
+
+                    cmd.Parameters.AddWithValue("@codigo", this._codigo);
+
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+                }
+            }               
         }
     }
 }
