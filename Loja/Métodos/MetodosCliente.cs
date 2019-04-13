@@ -102,6 +102,7 @@ namespace Loja
                     try
                     {
                         cmd.ExecuteNonQuery();
+                        this.modificado = false;
                     }
                     catch (SqlException)
                     {
@@ -151,15 +152,15 @@ namespace Loja
 
         public void Dispose()
         {
-            if (this.novo)
-                Insert();
-            else if(this.modificado)
-                Update();
+            Gravar();
         }
 
         public void Gravar()
         {
-            
+            if (this.novo)
+                Insert();
+            else if(this.modificado)
+                Update();
         }
     }
 }

@@ -68,14 +68,20 @@ namespace Loja
         public int? tipo
         {
             get { return _tipo; }
-            set { _tipo = value; this.modificado = true; }
+            set {
+                _tipo = value;
+                this.modificado = true;
+            }
         }
 
         private DateTime? _dataCadastro;
         public DateTime? dataCadastro
         {
             get { return _dataCadastro; }
-            set { _dataCadastro = value; this.modificado = true; }
+            set {
+                _dataCadastro = value;
+                this.modificado = true;
+            }
         }
         
         public List<Classes.Contato> contatos { get; set; }
