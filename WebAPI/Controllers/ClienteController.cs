@@ -6,12 +6,16 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
+
 namespace WebAPI.Controllers
 {
     public class ClienteController : ApiController
     {
         List<Cliente> clientes = new List<Cliente>();
+        
+        
         // GET: api/Cliente
+        [HttpGet]
         public IEnumerable<Cliente> Get()
         {
             PreencherLista();            
@@ -20,6 +24,7 @@ namespace WebAPI.Controllers
             //return new string[] { "value1", "value2" };
         }
 
+        
         public List<Cliente> PreencherLista()
         {
             Cliente cliente;
@@ -54,27 +59,73 @@ namespace WebAPI.Controllers
         }
 
         // GET: api/Cliente/5
-        public Cliente Get(int id)
+        [HttpGet]
+        public IHttpActionResult Get(int id)
         {
             PreencherLista();
-
-            return clientes[id];
+            
+            return Ok(clientes[id]);
             //return "value";
+            //return NotFound();
         }
 
         // POST: api/Cliente
-        public void Post([FromBody]string value)
+        [HttpPost]
+        public IHttpActionResult Post([FromBody]Cliente value)
         {
+            try
+            {
+                value.Gravar();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return Ok();
         }
 
         // PUT: api/Cliente/5
-        public void Put(int id, [FromBody]string value)
+        //Método equiparado ao UPDATE, serve para atualizar a base de dados
+        [HttpPut]
+        public IHttpActionResult Put(int id, [FromBody]Cliente value)
         {
+            Cliente cliente = new Cliente(id);
+
+            cliente.codigo = value.codigo;
+            cliente.nome = value.nome;
+            cliente.dataCadastro = value.dataCadastro;
+            cliente.tipo = value.tipo;
+
+            try
+            {
+                cliente.Update();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return Ok();
         }
 
         // DELETE: api/Cliente/5
-        public void Delete(int id)
+        [HttpDelete]
+        public IHttpActionResult Delete(int id)
         {
+            Cliente cliente = new Cliente(id);
+
+            try
+            {
+                //cliente.Apagar();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return Ok();
         }
     }
 }
