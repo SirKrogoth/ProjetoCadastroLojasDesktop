@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LojaManager", "LojaManager\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{837E70F3-7A1D-4118-9B2B-2D36074A3A12}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsumindoWebAPI", "ConsumindoWebAPI\ConsumindoWebAPI.csproj", "{DA91BA97-8241-4A00-88FF-F0F0498C5C20}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{837E70F3-7A1D-4118-9B2B-2D36074A3A12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{837E70F3-7A1D-4118-9B2B-2D36074A3A12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{837E70F3-7A1D-4118-9B2B-2D36074A3A12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA91BA97-8241-4A00-88FF-F0F0498C5C20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA91BA97-8241-4A00-88FF-F0F0498C5C20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA91BA97-8241-4A00-88FF-F0F0498C5C20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA91BA97-8241-4A00-88FF-F0F0498C5C20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

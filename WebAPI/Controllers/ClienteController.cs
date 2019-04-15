@@ -59,6 +59,7 @@ namespace WebAPI.Controllers
         }
 
         // GET: api/Cliente/5
+        [Route("api/ClienteController/GET")]
         [HttpGet]
         public IHttpActionResult Get(int id)
         {
@@ -70,8 +71,9 @@ namespace WebAPI.Controllers
         }
 
         // POST: api/Cliente
+        [Route("api/ClienteController/POST")]
         [HttpPost]
-        public IHttpActionResult Post([FromBody]Cliente value)
+        public IHttpActionResult Post([FromBody] Cliente value)
         {
             try
             {
