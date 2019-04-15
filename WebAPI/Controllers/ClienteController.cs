@@ -8,7 +8,7 @@ using System.Web.Http;
 
 
 namespace WebAPI.Controllers
-{
+{    
     public class ClienteController : ApiController
     {
         List<Cliente> clientes = new List<Cliente>();
@@ -71,7 +71,7 @@ namespace WebAPI.Controllers
         }
 
         // POST: api/Cliente
-        [Route("api/ClienteController/POST")]
+        //[Route("api/ClienteController/POST")]
         [HttpPost]
         public IHttpActionResult Post([FromBody] Cliente value)
         {
